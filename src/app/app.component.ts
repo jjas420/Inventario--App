@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Inventario--App';
+  autor: string='Jonathan Ayona';
+  
 }
