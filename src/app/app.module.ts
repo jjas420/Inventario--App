@@ -11,8 +11,7 @@ import { ClienteService } from './clientes/cliente.service';
 import { RouterModule,Routes } from '@angular/router';
 
 import { provideHttpClient } from '@angular/common/http';
-import {MatPaginatorModule} from '@angular/material/paginator'
-import {MatTableDataSource, MatTableModule} from '@angular/material/table';
+
 
 const routes:Routes=[
   {path:'',redirectTo:'/clientes' , pathMatch:'full'},
@@ -33,9 +32,7 @@ const routes:Routes=[
   imports: [ 
     BrowserModule,
     AppRoutingModule,
-    RouterModule.forRoot(routes),
-    MatPaginatorModule
-    
+    RouterModule.forRoot(routes),    
   ],
   providers: [ClienteService,
     provideHttpClient()

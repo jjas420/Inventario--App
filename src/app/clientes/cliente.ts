@@ -3,7 +3,7 @@ export class Cliente {
     nombre: string ="";
     apellido: string="";
     email: string="";
-    createAt: string="";
+    creatAt: string="";
    
     
 
