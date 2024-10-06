@@ -10,6 +10,10 @@ import { ClientesComponent } from './clientes/clientes.component';
 import { ClienteService } from './clientes/cliente.service';
 import { RouterModule,Routes } from '@angular/router';
 
+import { provideHttpClient } from '@angular/common/http';
+import {MatPaginatorModule} from '@angular/material/paginator'
+import {MatTableDataSource, MatTableModule} from '@angular/material/table';
+
 const routes:Routes=[
   {path:'',redirectTo:'/clientes' , pathMatch:'full'},
   {path:'directivas',component:DirectivaComponent },
@@ -29,10 +33,13 @@ const routes:Routes=[
   imports: [ 
     BrowserModule,
     AppRoutingModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    MatPaginatorModule
     
   ],
-  providers: [ClienteService],
+  providers: [ClienteService,
+    provideHttpClient()
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
