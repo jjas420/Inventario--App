@@ -34,6 +34,17 @@ export class ClienteService {
       map((Response)=> Response  as Cliente[])
      );
   }
+  update(cliente:Cliente): Observable <Cliente>{
+         return this.http.put<Cliente>(`${this.urlEndPoitn}/${cliente.id}`,cliente,{headers:this.hhtpHeaders})
+
+  }
+
+  delete(id:number): Observable<Cliente>{
+    return this.http.delete<Cliente>(`${this.urlEndPoitn}/${id}`,{headers:this.hhtpHeaders})
+
+    
+  }
+   
   
 
    

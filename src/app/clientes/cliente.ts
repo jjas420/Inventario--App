@@ -1,5 +1,5 @@
 export class Cliente {
-    id:number| undefined;
+    id:any;
     nombre: string="";
     apellido: string="";
     email: string="";

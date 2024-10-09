@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Cliente } from './cliente';
 import { ClienteService } from './cliente.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import Swall from 'sweetalert2'
-import swal from 'sweetalert2';
+import swall from 'sweetalert2';
 
 
 @Component({
@@ -39,11 +38,22 @@ export class FormComponent implements OnInit {
     .subscribe(
       cliente=>{
         this.router.navigate(['/clientes'])
-        swal('nuevo cliente', `Cliente ${cliente.nombre} creado con exito!!`   ,'success')
+       swall.fire('nuevo cliente', `Cliente ${cliente.nombre} creado con exito!!`   ,'success')
       }
+
+    
 
     )
     
   
+    }
+    update():void{
+      this.clienteService.update(this.cliente).subscribe(cliente=>{
+        this.router.navigate(['/clientes'])
+        swall.fire('cliente actualizado',`Cliente ${cliente.nombre} Actulizado con exito!!`,'success')
+
+
+      })
+
     }
   }

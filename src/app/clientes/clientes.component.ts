@@ -5,6 +5,8 @@ import { ClienteService } from './cliente.service';
 import {AfterViewInit, Component} from '@angular/core';
 import {MatPaginator, MatPaginatorModule, PageEvent} from '@angular/material/paginator';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-clientes',
@@ -20,7 +22,7 @@ export class ClientesComponent {
   carritos: Cliente []=[];
 
   nombre: string="";
-  constructor(private clienteService: ClienteService){
+  constructor(public clienteService: ClienteService){
 
   }
   ngOnInit(){
@@ -72,6 +74,57 @@ export class ClientesComponent {
     }
 
 
+  }
+
+  
+  delete(cliente:Cliente):void{
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: "btn btn-success",
+        cancelButton: "btn btn-danger"
+      },
+      buttonsStyling: false
+    });
+    swalWithBootstrapButtons.fire({
+      title: "estas seguro?",
+      text: `seguro que quieres eliminar el cliente ${cliente.nombre} ${cliente.apellido}`,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, delete it!",
+      cancelButtonText: "No, cancel!",
+      reverseButtons: true
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.clienteService.delete(cliente.id).subscribe(
+          response=>{
+            this.clientes=this.clientes.filter(cli=>cli !==cliente)
+
+            swalWithBootstrapButtons.fire({
+              title: "eliminado!",
+              text: `cliente ${cliente.nombre} fue eliminado`,
+              icon: "success"
+            });
+          }
+        )
+
+        
+      } else if (
+        /* Read more about handling dismissals below */
+        result.dismiss === Swal.DismissReason.cancel
+      ) {
+        swalWithBootstrapButtons.fire({
+          title: "Cancelled",
+          text: "no fue eliminado)",
+          icon: "error"
+        });
+      }
+    });
+    
+
+
+    
+      
+     
   }
 
 }
