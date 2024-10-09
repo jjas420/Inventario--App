@@ -2,7 +2,12 @@
     <div class="card-header">Clientes</div>
     <div class="card-body">
       <h5 class="card-title">Listado de Clientes</h5>
-        <table class="table table-bordered table-striped">
+      <div class="my-2 text-left">
+        <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/clientes/form']"> crear cliente</button>
+
+      </div>
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped ">
             <thead>
                 <tr>
                     <th>id</th>
@@ -10,6 +15,7 @@
                     <th>apellido</th>
                     <th>email</th>
                     <th>fecha</th>
+                    <th>editar</th>
 
                 </tr>
             </thead>
@@ -20,12 +26,16 @@
                     <td>{{cliente.apellido}}</td>
                     <td>{{cliente.email}}</td>
                     <td>{{cliente.creatAt}}</td>
+                    <td >
+                        <button type="button" name="editar" [routerLink]="['/clientes/form',cliente.id]" class="btn btn-primary">editar</button>
+                    </td>
                 </tr>
 
               
             </tbody>
 
         </table>
+    </div>
         <mat-paginator [length]="clientes.length+1"
               [pageSize]="PageSize"
               (page)="cambiarPagina($event)">

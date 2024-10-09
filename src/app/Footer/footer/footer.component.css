@@ -1,7 +1,11 @@
-.footer{
-    position: adsolute;
+.espacio{
+    margin-bottom: 100px;
+}
+.footers{
+    position: fixed;
     bottom: 0px;
     height: 60px;
     width: 100%;
-    margin-top: 20px;
+    margin-top: 30px;
+    border: solid red 1px;
 }

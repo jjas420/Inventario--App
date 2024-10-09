@@ -38,7 +38,8 @@
             ],
             "styles": [
               "src/styles.css",
-              "src/assets/css/bootstrap.min.css"
+              "src/assets/css/bootstrap.min.css",
+              "node_modules/sweetalert2/dist/sweetalert2.min.css"
             ],
 
             
@@ -72,6 +73,7 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+
           "configurations": {
             "production": {
               "buildTarget": "Inventario--App:build:production"
