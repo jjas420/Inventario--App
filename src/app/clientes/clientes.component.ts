@@ -17,6 +17,7 @@ export class ClientesComponent {
   desde:number=0;
   hasta:number=5;
   clientes: Cliente[] = [];
+  carritos: Cliente []=[];
 
   nombre: string="";
   constructor(private clienteService: ClienteService){
@@ -28,6 +29,17 @@ export class ClientesComponent {
       clientes=> this.clientes=clientes
     );
      
+  }
+
+
+
+  agregarItem(cliente:Cliente) {
+  // Se agrega una copia del nuevo ítem
+        this.carritos.push(cliente);
+        console.log(cliente);
+
+
+    
   }
 
 

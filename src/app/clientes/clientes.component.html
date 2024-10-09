@@ -33,18 +33,60 @@
                     <td >
                         <button type="button" name="editar" [routerLink]="['/clientes/form',cliente.id]" class="btn btn-primary">editar</button>
                     </td>
+                    <td >
+                        <button (click)="agregarItem(cliente)">agregar</button>
+                    </td>
                 </tr>
-
               
             </tbody>
 
         </table>
+    
     </div>
-        <mat-paginator [length]="clientes.length+1"
+    <div>
+        <mat-paginator [length]="clientes.length"
               [pageSize]="PageSize"
               (page)="cambiarPagina($event)">
+
 </mat-paginator>
         
     </div>
-    
   </div>
+</div>
+
+
+
+  <div class="espacio tablaClientes">
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped ">
+          <thead>
+              <tr>
+                  <th>id</th>
+                  <th>nombre</th>
+                  <th>apellido</th>
+                  <th>email</th>
+                  <th>fecha</th>
+                  <th>eliminar</th>
+  
+              </tr>
+          </thead>
+          <tbody> 
+              <tr *ngFor="let carrito of carritos">
+                  <td>{{carrito.id}}</td>
+                  <td>{{carrito.nombre}}</td>
+                  <td>{{carrito.apellido}}</td>
+                  <td>{{carrito.email}}</td>
+                  <td>{{carrito.creatAt}}</td>
+                  <td >
+                      <button type="button" >eliminar</button>
+                  </td>
+              </tr>
+  
+            
+          </tbody>
+  
+      </table>
+    </div>
+  
+
+
