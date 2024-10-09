@@ -6,6 +6,10 @@
         <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/clientes/form']"> crear cliente</button>
 
       </div>
+      <div class="m-2">
+        <label for="nombre" class="m-4" >Bucar Cliente</label><input name="nombre" (keyup)="onKey($event)" placeholder="buscador" />
+
+      </div>
       <div class="table-responsive">
         <table class="table table-bordered table-striped ">
             <thead>

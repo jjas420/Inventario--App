@@ -17,21 +17,47 @@ export class ClientesComponent {
   desde:number=0;
   hasta:number=5;
   clientes: Cliente[] = [];
+
+  nombre: string="";
   constructor(private clienteService: ClienteService){
 
   }
   ngOnInit(){
-    
+
     this.clienteService.getClientes().subscribe(
       clientes=> this.clientes=clientes
     );
      
   }
+
+
   
   cambiarPagina(e:PageEvent){
     console.log(e);
     this.desde= e.pageIndex*e.pageSize;
     this.hasta= this.desde+ e.pageSize;
+
+
+  }
+  buscar(e:string){
+    this.nombre=e
+
+    console.log('Dato enviado:', e);
+
+  }
+  onKey(event: KeyboardEvent) {
+    const inputValue = (event.target as HTMLInputElement).value;
+    console.log('Valor del input:', inputValue);
+    this.nombre=inputValue;
+    if (this.nombre.trim() === '') { // trim() elimina espacios en blanco
+      this.clienteService.getClientes().subscribe(
+        clientes=> this.clientes=clientes
+      );    } else {
+
+        this.clienteService.getClienteporNombre(this.nombre).subscribe(
+          clientes=> this.clientes=clientes
+        );
+    }
 
 
   }

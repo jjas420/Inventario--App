@@ -9,6 +9,8 @@ import { map } from 'rxjs/operators';
 @Injectable()
 export class ClienteService {
   private urlEndPoitn:string='http://localhost:8080/api/clientes';
+  private urlEndPoitn2:string='http://localhost:8080/api/clientes/buscar';
+  
   
   private hhtpHeaders= new HttpHeaders({'Content-Type':'application/json'})
 
@@ -27,6 +29,12 @@ export class ClienteService {
   getCliente(id: any):Observable<Cliente>{
     return this.http.get<Cliente>(`${this.urlEndPoitn}/${id}`)
   }
+  getClienteporNombre(nombre: string):Observable<Cliente[]>{
+    return this.http.get(`${this.urlEndPoitn2}/${nombre}`).pipe(
+      map((Response)=> Response  as Cliente[])
+     );
+  }
+  
 
    
 
