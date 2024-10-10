@@ -1,0 +1,46 @@
+<div >
+<div id="pdfContent"  >
+    <h1>lista de  cliente</h1>
+  
+ 
+ <div>
+  <table class="tablaClientes table table-bordered table-striped "  >
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>nombre</th>
+            <th>apellido</th>
+            <th>email</th>
+            <th>fecha</th>
+           
+
+        </tr>
+
+
+    </thead>
+    <tbody> 
+        <tr *ngFor="let cliente of clientes">
+            <td>{{cliente.id}}</td>
+            <td>{{cliente.nombre}}</td>
+            <td>{{cliente.apellido}}</td>
+            <td>{{cliente.email}}</td>
+            <td>{{cliente.creatAt}}</td>
+            
+           
+        </tr>
+      
+    </tbody>
+
+</table>
+
+
+
+ </div>
+ 
+ 
+  </div>
+
+</div>
+  
+  <!-- Botón para generar el PDF -->
+ 

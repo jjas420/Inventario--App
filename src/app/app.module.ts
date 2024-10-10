@@ -13,6 +13,7 @@ import { provideHttpClient } from '@angular/common/http';
 import { MatPaginator } from '@angular/material/paginator';
 import { FormComponent } from './clientes/form.component';
 import { FormsModule } from '@angular/forms';
+import { PdfComponent } from './Prueba/pdf/pdf.component';
 
 
 
@@ -21,7 +22,11 @@ const routes:Routes=[
   {path:'directivas',component:DirectivaComponent },
   {path:'clientes',component:ClientesComponent },
   {path: 'clientes/form', component:FormComponent},
-  {path:'clientes/form/:id', component:FormComponent}
+  {path:'clientes/form/:id', component:FormComponent},
+  {path:'clientes/pdf', component:PdfComponent}
+
+  
+
 
 
 ]
@@ -34,7 +39,8 @@ const routes:Routes=[
     FooterComponent,
     DirectivaComponent,
     ClientesComponent,
-    FormComponent
+    FormComponent,
+    PdfComponent
     
   ],
   imports: [ 

@@ -6,6 +6,7 @@ import {AfterViewInit, Component} from '@angular/core';
 import {MatPaginator, MatPaginatorModule, PageEvent} from '@angular/material/paginator';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import Swal from 'sweetalert2';
+import { DataService } from '../Prueba/pdf/pdfService';
 
 
 @Component({
@@ -22,7 +23,7 @@ export class ClientesComponent {
   carritos: Cliente []=[];
 
   nombre: string="";
-  constructor(public clienteService: ClienteService){
+  constructor(private clienteService: ClienteService, private dataService: DataService){
 
   }
   ngOnInit(){
@@ -42,6 +43,10 @@ export class ClientesComponent {
 
 
     
+  }
+  enviarDatos(){
+    this.dataService.actualizarDatosClientes(this.clientes);
+
   }
 
 

@@ -4,6 +4,7 @@
       <h5 class="card-title">Listado de Clientes</h5>
       <div class="my-2 text-left">
         <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/clientes/form']"> crear cliente</button>
+        <button class="btn btn-rounded btn-primary" (click)="enviarDatos()" type="button" [routerLink]="['/clientes/pdf']"> Crear Pdf</button>
 
       </div>
       <div class="m-2">
