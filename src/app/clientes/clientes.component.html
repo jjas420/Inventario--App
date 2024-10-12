@@ -11,8 +11,14 @@
         <label for="nombre" class="m-4" >Bucar Cliente</label><input name="nombre" (keyup)="onKey($event)" placeholder="buscador" />
 
       </div>
+      <div *ngIf="clientes?.length == 0" class="alert alert-info">
+
+        no hay registros en la base de datos
+
+
+      </div>
       <div class="table-responsive">
-        <table class="table table-bordered table-striped ">
+        <table class="table table-bordered table-striped" *ngIf="clientes.length > 0">
             <thead>
                 <tr>
                     <th>id</th>
