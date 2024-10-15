@@ -14,17 +14,20 @@ import { MatPaginator } from '@angular/material/paginator';
 import { FormComponent } from './clientes/form.component';
 import { FormsModule } from '@angular/forms';
 import { PdfComponent } from './Prueba/pdf/pdf.component';
+import { AuthorizedComponent } from './components/authorized/authorized.component';
+import { HomeComponent } from './components/home/home.component';
 
 
 
 const routes:Routes=[
-  {path:'',redirectTo:'/clientes' , pathMatch:'full'},
   {path:'directivas',component:DirectivaComponent },
   {path:'clientes',component:ClientesComponent },
   {path: 'clientes/form', component:FormComponent},
   {path:'clientes/form/:id', component:FormComponent},
-  {path:'clientes/pdf', component:PdfComponent}
-
+  {path:'clientes/pdf', component:PdfComponent},
+  { path: '', component: HomeComponent },
+  { path: 'authorized', component: AuthorizedComponent },
+  { path: '**', redirectTo: '', pathMatch: 'full' }
   
 
 
@@ -40,7 +43,9 @@ const routes:Routes=[
     DirectivaComponent,
     ClientesComponent,
     FormComponent,
-    PdfComponent
+    PdfComponent,
+    AuthorizedComponent,
+    HomeComponent
     
   ],
   imports: [ 

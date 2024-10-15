@@ -8,8 +8,8 @@ import { map } from 'rxjs/operators';
 
 @Injectable()
 export class ClienteService {
-  private urlEndPoitn:string='http://localhost:8080/api/clientes';
-  private urlEndPoitn2:string='http://localhost:8080/api/clientes/buscar';
+  private urlEndPoitn:string='http://localhost:9000/api/clientes';
+  private urlEndPoitn2:string='http://localhost:9000/api/clientes/buscar';
   
   
   private hhtpHeaders= new HttpHeaders({'Content-Type':'application/json'})
