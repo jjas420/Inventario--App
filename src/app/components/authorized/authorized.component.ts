@@ -17,7 +17,7 @@ export class AuthorizedComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe( data => {
       this.code = data['code'];
-      this.router.navigate(['/authorized']);
+      
     });
 
   }
