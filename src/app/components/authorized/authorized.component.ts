@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { TokenService } from '../../services/token.service';
 
 @Component({
   selector: 'app-authorized',
@@ -14,7 +15,8 @@ export class AuthorizedComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private authService: AuthService
+    private authService: AuthService,
+    private tokenService:TokenService
   ) { }
 
   ngOnInit(): void {
@@ -27,7 +29,7 @@ export class AuthorizedComponent implements OnInit {
   getToken(): void {
     this.authService.getToken(this.code).subscribe(
       data => {
-        console.log(data);
+       this.tokenService.setTokens(data.access_token, data.refresh_token);
       },
       err => {
         console.log(err);
