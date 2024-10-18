@@ -16,6 +16,7 @@ import { FormsModule } from '@angular/forms';
 import { PdfComponent } from './Prueba/pdf/pdf.component';
 import { AuthorizedComponent } from './components/authorized/authorized.component';
 import { HomeComponent } from './components/home/home.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -27,6 +28,9 @@ const routes:Routes=[
   {path:'clientes/pdf', component:PdfComponent},
   { path: '', component: HomeComponent },
   { path: 'authorized', component: AuthorizedComponent },
+  { path: 'home', component: HomeComponent },
+
+
   { path: '**', redirectTo: '', pathMatch: 'full' }
   
 

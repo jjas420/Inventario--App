@@ -29,7 +29,6 @@ export class HeaderComponent implements OnInit
     private router: Router
   ) { }
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
   }
   onLogin(): void {
     const httpParams = new HttpParams({fromObject: this.params});
