@@ -12,7 +12,8 @@ import { HttpParams } from '@angular/common/http';
 })
 export class HeaderComponent implements OnInit
  {
- 
+  logout_url = environment.logout_url;
+
   authorize_uri = environment.authorize_uri;
 
   params: any = {
@@ -34,6 +35,9 @@ export class HeaderComponent implements OnInit
     const httpParams = new HttpParams({fromObject: this.params});
     const codeUrl = this.authorize_uri + httpParams.toString();
     location.href = codeUrl;
+  }
+  onLogout(): void {
+    location.href = this.logout_url;
   }
   
 

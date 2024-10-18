@@ -19,6 +19,7 @@ import { HomeComponent } from './components/home/home.component';
 import { UserComponent } from './components/user/user.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { ResourceInterceptor } from './interceptors/resource.interceptor';
+import { LogoutComponent } from './components/logout/logout.component';
 
 
 
@@ -32,6 +33,8 @@ const routes:Routes=[
   { path: 'authorized', component: AuthorizedComponent },
   { path: 'home', component: HomeComponent },
   { path: 'user', component: UserComponent },
+  { path: 'logout', component: LogoutComponent },
+
   { path: 'admin', component: AdminComponent },
 
 
@@ -57,7 +60,8 @@ const routes:Routes=[
     AuthorizedComponent,
     HomeComponent,
     UserComponent,
-    AdminComponent
+    AdminComponent,
+    LogoutComponent
     
   ],
   imports: [ 
