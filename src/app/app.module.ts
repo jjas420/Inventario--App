@@ -9,14 +9,16 @@ import { DirectivaComponent } from './directiva/directiva.component';
 import { ClientesComponent } from './clientes/clientes.component';
 import { ClienteService } from './clientes/cliente.service';
 import { RouterModule,Routes } from '@angular/router';
-import { provideHttpClient } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, HttpClientModule } from '@angular/common/http';
 import { MatPaginator } from '@angular/material/paginator';
 import { FormComponent } from './clientes/form.component';
 import { FormsModule } from '@angular/forms';
 import { PdfComponent } from './Prueba/pdf/pdf.component';
 import { AuthorizedComponent } from './components/authorized/authorized.component';
 import { HomeComponent } from './components/home/home.component';
-import { HttpClientModule } from '@angular/common/http';
+import { UserComponent } from './components/user/user.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { ResourceInterceptor } from './interceptors/resource.interceptor';
 
 
 
@@ -29,6 +31,10 @@ const routes:Routes=[
   { path: '', component: HomeComponent },
   { path: 'authorized', component: AuthorizedComponent },
   { path: 'home', component: HomeComponent },
+  { path: 'user', component: UserComponent },
+  { path: 'admin', component: AdminComponent },
+
+
 
 
   { path: '**', redirectTo: '', pathMatch: 'full' }
@@ -49,7 +55,9 @@ const routes:Routes=[
     FormComponent,
     PdfComponent,
     AuthorizedComponent,
-    HomeComponent
+    HomeComponent,
+    UserComponent,
+    AdminComponent
     
   ],
   imports: [ 
@@ -57,10 +65,12 @@ const routes:Routes=[
     AppRoutingModule,
     MatPaginator,
     FormsModule,
-    RouterModule.forRoot(routes),    
+    RouterModule.forRoot(routes), 
+    HttpClientModule   
   ],
   providers: [ClienteService,
-    provideHttpClient()
+    {provide: HTTP_INTERCEPTORS, useClass: ResourceInterceptor, multi: true},
+  
   ],
   bootstrap: [AppComponent]
 })
