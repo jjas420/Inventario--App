@@ -13,6 +13,7 @@ export const environment = {
   grant_type: 'authorization_code',
   resource_url: 'http://localhost:8080/resource/',
   logout_url: 'http://localhost:9000/logout',
+  
 
 
   };

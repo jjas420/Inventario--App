@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { Router } from '@angular/router';
 import { HttpParams } from '@angular/common/http';
+import { TokenService } from '../../services/token.service';
 
 @Component({
   selector: 'app-header',
@@ -10,11 +11,12 @@ import { HttpParams } from '@angular/common/http';
 
 
 })
-export class HeaderComponent implements OnInit
- {
+export class HeaderComponent implements OnInit {
   logout_url = environment.logout_url;
 
   authorize_uri = environment.authorize_uri;
+  isLogged: boolean;
+  isAdmin: boolean;
 
   params: any = {
     client_id: environment.client_id,
@@ -27,18 +29,25 @@ export class HeaderComponent implements OnInit
   }
   title = 'Inventario';
   constructor(
-    private router: Router
+    private router: Router, private tokenService: TokenService
   ) { }
   ngOnInit(): void {
+    this.getLogged();
+  }
+  getLogged(): void {
+    this.isLogged = this.tokenService.isLogged();
+    this.isAdmin = this.tokenService.isAdmin();
   }
   onLogin(): void {
-    const httpParams = new HttpParams({fromObject: this.params});
+    const httpParams = new HttpParams({ fromObject: this.params });
     const codeUrl = this.authorize_uri + httpParams.toString();
     location.href = codeUrl;
   }
   onLogout(): void {
+    this.tokenService.clear();
+
     location.href = this.logout_url;
   }
-  
+
 
 }

@@ -9,12 +9,11 @@ import { TokenService } from '../../services/token.service';
 })
 export class LogoutComponent {
   constructor(
-    private router: Router, private tokenService:TokenService
+    private router: Router
   ) { }
 
   ngOnInit(): void {
     this.router.navigate(['']);
-    this.tokenService.clear();
   
 
   }
