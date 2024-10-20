@@ -48,7 +48,6 @@ export class HeaderComponent implements OnInit {
     location.href = codeUrl;
   }
   onLogout(): void {
-    this.tokenService.clear();
 
     location.href = this.logout_url;
   }
