@@ -20,6 +20,8 @@ import { UserComponent } from './components/user/user.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { ResourceInterceptor } from './interceptors/resource.interceptor';
 import { LogoutComponent } from './components/logout/logout.component';
+import { GeneradorQrComponent } from './generador-qr/generador-qr.component';
+import { QRCodeModule } from 'angularx-qrcode';
 
 
 
@@ -36,6 +38,8 @@ const routes:Routes=[
   { path: 'logout', component: LogoutComponent },
 
   { path: 'admin', component: AdminComponent },
+  { path: 'generador', component: GeneradorQrComponent },
+
 
 
 
@@ -61,7 +65,8 @@ const routes:Routes=[
     HomeComponent,
     UserComponent,
     AdminComponent,
-    LogoutComponent
+    LogoutComponent,
+    GeneradorQrComponent
     
   ],
   imports: [ 
@@ -70,6 +75,7 @@ const routes:Routes=[
     MatPaginator,
     FormsModule,
     RouterModule.forRoot(routes), 
+    QRCodeModule,
     HttpClientModule   
   ],
   providers: [ClienteService,
