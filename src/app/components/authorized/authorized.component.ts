@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { TokenService } from '../../services/token.service';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-authorized',
@@ -40,6 +41,11 @@ export class AuthorizedComponent implements OnInit {
         console.log(err);
       }
     );
+  }
+  logout_url = environment.logout_url;
+  onLogout(): void {
+
+    location.href = this.logout_url;
   }
   
 }
