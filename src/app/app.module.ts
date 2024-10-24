@@ -22,6 +22,13 @@ import { ResourceInterceptor } from './interceptors/resource.interceptor';
 import { LogoutComponent } from './components/logout/logout.component';
 import { GeneradorQrComponent } from './generador-qr/generador-qr.component';
 import { QRCodeModule } from 'angularx-qrcode';
+import { ZXingScannerModule } from '@zxing/ngx-scanner';
+import { QrScannerComponent } from './qr-scanner/qr-scanner.component';
+
+
+
+
+
 
 
 
@@ -39,6 +46,8 @@ const routes:Routes=[
 
   { path: 'admin', component: AdminComponent },
   { path: 'generador', component: GeneradorQrComponent },
+
+  { path: 'escaner', component: QrScannerComponent },
 
 
 
@@ -60,6 +69,7 @@ const routes:Routes=[
     DirectivaComponent,
     ClientesComponent,
     FormComponent,
+    QrScannerComponent,
     PdfComponent,
     AuthorizedComponent,
     HomeComponent,
@@ -76,7 +86,8 @@ const routes:Routes=[
     FormsModule,
     RouterModule.forRoot(routes), 
     QRCodeModule,
-    HttpClientModule   
+    HttpClientModule,
+    ZXingScannerModule   
   ],
   providers: [ClienteService,
     {provide: HTTP_INTERCEPTORS, useClass: ResourceInterceptor, multi: true},
