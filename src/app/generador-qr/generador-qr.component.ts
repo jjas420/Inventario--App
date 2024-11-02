@@ -9,7 +9,7 @@ export class GeneradorQrComponent {
   public myAngularxQrCode: string = null;
   constructor () {
     // assign a value
-    this.myAngularxQrCode = 'feliz cumpleañ';
+    this.myAngularxQrCode = 'escaner prueba';
   }
 
 }
