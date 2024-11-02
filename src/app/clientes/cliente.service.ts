@@ -4,12 +4,14 @@ import { CLIENTES } from './clientes.json';
 import {of,Observable, from} from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
 
 
 @Injectable()
 export class ClienteService {
-  private urlEndPoitn:string='http://localhost:9000/api/clientes';
-  private urlEndPoitn2:string='http://localhost:9000/api/clientes/buscar';
+  resourceUrl = environment.resource_url;
+  private urlEndPoitn:string=this.resourceUrl+'/resource/clientes';
+  private urlEndPoitn2:string=this.resourceUrl+'/resource/clientes/buscar';
   
   
   private hhtpHeaders= new HttpHeaders({'Content-Type':'application/json'})

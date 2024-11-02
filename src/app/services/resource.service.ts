@@ -13,10 +13,10 @@ export class ResourceService {
   constructor(private httpClient: HttpClient) { }
 
   public user(): Observable<any> {
-    return this.httpClient.get<any>(this.resourceUrl + 'user');
+    return this.httpClient.get<any>(this.resourceUrl + '/resource/user');
   }
 
   public admin(): Observable<any> {
-    return this.httpClient.get<any>(this.resourceUrl + 'admin');
+    return this.httpClient.get<any>(this.resourceUrl + '/resource/admin');
   }
 }

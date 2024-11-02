@@ -35,15 +35,19 @@ export class ClientesComponent {
   }
 
 
-
+//esto es para carro
   agregarItem(cliente:Cliente) {
   // Se agrega una copia del nuevo ítem
         this.carritos.push(cliente);
         console.log(cliente);
-
-
-    
   }
+  //elimanar del carro
+  deleteItem(id: number): void {
+    this.carritos = this.carritos.filter(item => item.id !== id);
+  }
+
+
+
   enviarDatos(){
     this.dataService.actualizarDatosClientes(this.clientes);
 
@@ -124,12 +128,7 @@ export class ClientesComponent {
         });
       }
     });
-    
-
-
-    
-      
-     
+           
   }
 
 }

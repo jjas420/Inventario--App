@@ -28,7 +28,6 @@
                     <th>fecha</th>
                     <th>editar</th>
                     <th>eliminar</th>
-
                 </tr>
             </thead>
             <tbody> 
@@ -94,7 +93,8 @@
                   <td>{{carrito.email}}</td>
                   <td>{{carrito.creatAt}}</td>
                   <td >
-                      <button type="button" >eliminar</button>
+                      <button type="button" (click)="deleteItem(carrito.id)" >eliminar</button>
+                      
                   </td>
               </tr>
   
