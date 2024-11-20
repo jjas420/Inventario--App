@@ -9,23 +9,32 @@ import { DirectivaComponent } from './directiva/directiva.component';
 import { ClientesComponent } from './clientes/clientes.component';
 import { ClienteService } from './clientes/cliente.service';
 import { RouterModule,Routes } from '@angular/router';
-import { provideHttpClient } from '@angular/common/http';
+import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
 import { MatPaginator } from '@angular/material/paginator';
 import { FormComponent } from './clientes/form.component';
 import { FormsModule } from '@angular/forms';
 import { PdfComponent } from './Prueba/pdf/pdf.component';
+import { LoginComponent } from './login/login.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './login/auth.interceptor';
+import { AuthGuard } from './core/guards/auth.guard';
+import { AuthenticatedGuard } from './core/guards/authenticated.guard';
 
 
 
 const routes:Routes=[
-  {path:'',redirectTo:'/clientes' , pathMatch:'full'},
-  {path:'directivas',component:DirectivaComponent },
-  {path:'clientes',component:ClientesComponent },
-  {path: 'clientes/form', component:FormComponent},
-  {path:'clientes/form/:id', component:FormComponent},
-  {path:'clientes/pdf', component:PdfComponent}
+  {path:'',redirectTo:'/login' , pathMatch:'full'},
+  {path:'directivas',component:DirectivaComponent , canActivate:[AuthGuard]},
+  {path:'clientes',component:ClientesComponent, canActivate:[AuthGuard] },
+  {path: 'clientes/form', component:FormComponent, canActivate:[AuthGuard] },
+  {path:'clientes/form/:id', component:FormComponent, canActivate:[AuthGuard]},
+  {path:'clientes/pdf', component:PdfComponent, canActivate:[AuthGuard]},
+
+  {path:'login', component:LoginComponent,canActivate:[AuthenticatedGuard]}
+
 
   
+
 
 
 
@@ -40,7 +49,8 @@ const routes:Routes=[
     DirectivaComponent,
     ClientesComponent,
     FormComponent,
-    PdfComponent
+    PdfComponent,
+    LoginComponent,
     
   ],
   imports: [ 
@@ -48,10 +58,20 @@ const routes:Routes=[
     AppRoutingModule,
     MatPaginator,
     FormsModule,
+    HttpClientModule,
     RouterModule.forRoot(routes),    
   ],
   providers: [ClienteService,
-    provideHttpClient()
+    provideHttpClient(withFetch()),
+    {
+      provide: HTTP_INTERCEPTORS,    // Configuración para usar el interceptor
+      useClass: AuthInterceptor,      // El interceptor que se utilizará
+      multi: true                    // Permite usar múltiples interceptores si es necesario
+    }
+    
+   
+    
+    
   ],
   bootstrap: [AppComponent]
 })
