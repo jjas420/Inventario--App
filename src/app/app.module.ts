@@ -21,6 +21,7 @@ import { AuthGuard } from './core/guards/auth.guard';
 import { AuthenticatedGuard } from './core/guards/authenticated.guard';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { adminGuard } from './core/guards/admin.guard';
+import { FormUsuariosComponent } from './usuarios/form-usuarios/form-usuarios.component';
 
 
 
@@ -31,10 +32,10 @@ const routes:Routes=[
   {path: 'clientes/form', component:FormComponent, canActivate:[AuthGuard] },
   {path:'clientes/form/:id', component:FormComponent, canActivate:[AuthGuard]},
   {path:'clientes/pdf', component:PdfComponent, canActivate:[AuthGuard]},
-  {path:'usuarios', component:UsuariosComponent, canActivate:[AuthGuard,adminGuard]},
+  {path:'users', component:UsuariosComponent, canActivate:[AuthGuard,adminGuard]},
 
-
-
+  {path:'users/form', component:FormUsuariosComponent, canActivate:[AuthGuard,adminGuard]},
+  {path:'users/form/:id', component:FormUsuariosComponent, canActivate:[AuthGuard,adminGuard]},
 
   {path:'login', component:LoginComponent,canActivate:[AuthenticatedGuard]}
 
@@ -58,6 +59,7 @@ const routes:Routes=[
     PdfComponent,
     LoginComponent,
     UsuariosComponent,
+    FormUsuariosComponent,
     
   ],
   imports: [ 

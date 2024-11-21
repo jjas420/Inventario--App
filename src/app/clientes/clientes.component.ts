@@ -15,7 +15,7 @@ import { DataService } from '../Prueba/pdf/pdfService';
   styleUrl: './clientes.component.css',
   
 })
-export class ClientesComponent {
+export class ClientesComponent  {
   PageSize=5;
   desde:number=0;
   hasta:number=5;
