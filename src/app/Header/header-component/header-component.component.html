@@ -39,6 +39,12 @@
               <li><a class="dropdown-item" href="#">Something else here</a></li>
             </ul>
           </li>
+          <li class="nav-item" routerLinkActive="active" *ngIf="isAdmin">
+            <a class="nav-link" aria-current="page" routerLink="/usuarios">
+              
+              crear usuario</a>
+
+          </li>
         </ul>
       </div>
       <li class="nav-item" *ngIf="!isLogged">

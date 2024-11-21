@@ -17,6 +17,7 @@ export class HeaderComponent implements OnInit{
   }
 
   isLogged = false;
+  isAdmin=false;
 
 
   ngOnInit() {
@@ -24,10 +25,19 @@ export class HeaderComponent implements OnInit{
     if (this.tokenService.getToken()) {
 
       this.isLogged = true;
+
+      if(this.tokenService.isAdmin()){
+        this.isAdmin=true;
+
+
+      }else{
+        this.isAdmin=false;
+      }
     } else {
 
       this.isLogged = false;
     }
+   
   }
 
   onLogOut(): void {
@@ -36,5 +46,7 @@ export class HeaderComponent implements OnInit{
 
     this.tokenService.logout();
   }
+
+
 
 }
