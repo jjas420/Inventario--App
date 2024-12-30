@@ -7,7 +7,7 @@ import swall from 'sweetalert2';
 
 @Component({
   selector: 'app-form',
-  templateUrl: './form.component.html',
+  templateUrl: './form.component.html'
 })
 export class FormComponent implements OnInit {
    cliente: Cliente= new Cliente();
