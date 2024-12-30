@@ -36,9 +36,9 @@ export class FormComponent implements OnInit {
     console.log(this.cliente);
     this.clienteService.create(this.cliente)
     .subscribe(
-      cliente=>{
+      json=>{
         this.router.navigate(['/clientes'])
-       swall.fire('nuevo cliente', `Cliente ${cliente.nombre} creado con exito!!`   ,'success')
+       swall.fire('nuevo cliente', ` ${json.mensaje} ${json.cliente.nombre}`   ,'success')
       }
 
     
@@ -48,10 +48,9 @@ export class FormComponent implements OnInit {
   
     }
     update():void{
-      this.clienteService.update(this.cliente).subscribe(cliente=>{
+      this.clienteService.update(this.cliente).subscribe(json=>{
         this.router.navigate(['/clientes'])
-        swall.fire('cliente actualizado',`Cliente ${cliente.nombre} Actulizado con exito!!`,'success')
-
+        swall.fire('nuevo cliente', ` ${json.mensaje} ${json.cliente.nombre}`   ,'success')
 
       })
 
