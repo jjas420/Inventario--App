@@ -1,4 +1,9 @@
+<ul class="alert alert-danger"  *ngIf="errores.length > 0" >    
+  <li *ngFor ="let err of errores">
+    {{err}}
+  </li>
 
+</ul>
 
 <div class="card bg-dark text-white">
     <div class="card-header">{{titulo}}</div>
@@ -7,7 +12,7 @@
         <form #clienteform="ngForm" > 
             <div class="mb-3">
               <label for="nombre" class="form-label"> nombre </label>
-              <input type="text" class="form-control" id="nombre" [(ngModel)]="cliente.nombre" name="nombre" required minlength="4" #nombre="ngModel" >
+              <input type="text" class="form-control" id="nombre" [(ngModel)]="cliente.nombre" name="nombre" required #nombre="ngModel" >
 
             <div class="alert alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
               <div *ngIf="nombre.errors?.['required']">
@@ -27,7 +32,7 @@
 
             <div class="mb-3">
               <label for="apellido" class="form-label">apellido</label>
-              <input type="text" class="form-control" id="apellido"  [(ngModel)]="cliente.apellido" name="apellido" required #apellido="ngModel" >
+              <input type="text" class="form-control" id="apellido"  [(ngModel)]="cliente.apellido" name="apellido"  #apellido="ngModel" >
               <div class="alert alert-danger" *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)">
                 <div *ngIf="apellido.errors?.['required']">
                   apellido es requerido
@@ -42,7 +47,7 @@
 
             <div class="mb-3">
                 <label for="email" class="form-label">email</label>
-                <input type="email" class="form-control" id="email"   [(ngModel)]="cliente.email" name="email" required  email #email="ngModel">
+                <input type="email" class="form-control" id="email"   [(ngModel)]="cliente.email" name="email" #email="ngModel">
                 <div class="alert alert-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
                   <div *ngIf="email.errors?.['required']">
                     email es requerido
